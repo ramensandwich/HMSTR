@@ -61,15 +61,34 @@ void loop()
   if(bluetooth.available())  // If the bluetooth sent any characters
   {
     // Send any characters the bluetooth prints to the serial monitor
-    int message = bluetooth.read();
+    byte message = (byte) bluetooth.read();
     
     if (message & 0x80)
     {
-      Serial.print("Going forward/backward");
-      Serial.print(message & 63);
+      if (message & 0x40)
+      {
+        Serial.print("Backward  ");
+        Serial.println(message & 0x3F);
+      }
+      else
+      {
+        Serial.print("Forward   ");
+        Serial.println(message & 0x3F);
+      }
     }
-
-    Serial.println((char)message, HEX);
+    else
+    {
+      if (message & 0x40)
+      {
+        Serial.print("Right     ");
+        Serial.println(message & 0x3F);
+      }
+      else
+      {
+        Serial.print("Left      ");
+        Serial.println(message & 0x3F);
+      }
+    }
   }
   if(Serial.available())  // If stuff was typed in the serial monitor
   {
