@@ -11,8 +11,8 @@ int potPin = 0;
 int right_forward = 5;
 int right_reverse = 6;
 int right_enable = 3;
-int bluetoothTx = 2;  // TX-O pin of bluetooth mate, Arduino D12
-int bluetoothRx = 3;  // RX-I pin of bluetooth mate, Arduino D13
+int bluetoothTx = 12;  // TX-O pin of bluetooth mate, Arduino D12
+int bluetoothRx = 13;  // RX-I pin of bluetooth mate, Arduino D13
 
 SoftwareSerial bluetooth(bluetoothTx, bluetoothRx);
 
