@@ -39,9 +39,9 @@ void setup()
 void loop()
 {
   
-  int speed = 0;
-  boolean reverse = false;
-  setMotor(speed, reverse);
+  //int speed = 0;
+  //boolean reverse = false;
+  //setMotor(speed, reverse);
   /*
   while (bluetooth.available() > 0) {
     // read value of character
@@ -69,11 +69,13 @@ void loop()
       {
         Serial.print("Backward  ");
         Serial.println(message & 0x3F);
+        setMotor((message & 0x3F) << 2, 0);
       }
       else
       {
         Serial.print("Forward   ");
         Serial.println(message & 0x3F);
+        setMotor((message & 0x3F) << 2, 1);
       }
     }
     else
