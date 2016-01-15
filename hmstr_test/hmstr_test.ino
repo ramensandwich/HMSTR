@@ -11,8 +11,8 @@ int potPin = 0;
 int right_forward = 5;
 int right_reverse = 6;
 int right_enable = 3;
-int bluetoothTx = 12;  // TX-O pin of bluetooth mate, Arduino D12
-int bluetoothRx = 13;  // RX-I pin of bluetooth mate, Arduino D13
+int bluetoothTx = 12;  // TX-O pin of bluetooth mate, Arduino D12 (Yellow)
+int bluetoothRx = 13;  // RX-I pin of bluetooth mate, Arduino D13 (Green)
 
 SoftwareSerial bluetooth(bluetoothTx, bluetoothRx);
 
@@ -57,13 +57,13 @@ void loop()
       {
         Serial.print("Right     ");
         Serial.println(((message & 0x3F) << 2));
-        setTurnMotor((message & 0x3F) << 2, 0);
+        setTurnMotor((message & 0x3F) << 2, 1);
       }
       else
       {
         Serial.print("Left      ");
         Serial.println(((message & 0x3F) << 2));
-        setTurnMotor((message & 0x3F) << 2, 1);
+        setTurnMotor((message & 0x3F) << 2, 0);
       }
     }
   }
